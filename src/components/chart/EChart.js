@@ -37,7 +37,7 @@ function EChart() {
           than last week <span className="bnb2">+30%</span>
         </Paragraph>
         <Paragraph className="lastweek">
-         This graph showing your news ratio
+       
         </Paragraph>
         <Row gutter>
           {items.map((v, index) => (

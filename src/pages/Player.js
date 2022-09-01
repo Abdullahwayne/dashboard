@@ -8,7 +8,7 @@ import {
   TableDataProject,
   TableFormProps,
   TableProject,
-} from "../utils/utils";
+} from "../utils/utils"; 
 
 // Images
 
@@ -23,7 +23,7 @@ function Player() {
             <Card
               bordered={false}
               className="criclebox tablespace mb-24"
-              title="Authors Table"
+              title="Athlete Information"
               extra={
                 <>
                   <Radio.Group onChange={onChange} defaultValue="a">
@@ -37,7 +37,7 @@ function Player() {
                 <Table
                   columns={PlayerColumns}
                   dataSource={PlayerData}
-                  pagination={false}
+                  pagination={true} 
                   className="ant-border-space"
                 />
               </div>

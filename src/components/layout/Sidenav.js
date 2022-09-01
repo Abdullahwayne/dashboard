@@ -23,11 +23,11 @@ function Sidenav({ color }) {
       <hr />
       <Menu theme="dark" mode="inline">
         <Menu.Item key="1">
-          <NavLink to="/dashboard">
+          <NavLink to="/">
             <span
               className="icon"
               style={{
-                background: page === "dashboard" ? color : "",
+                // background: page === "" ? color : "",
               }}
             >
               {SidebarDashboard}
@@ -135,12 +135,12 @@ function Sidenav({ color }) {
             <span className="label">Users</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="8">
+        {/* <Menu.Item key="8">
           <NavLink to="/sign-up">
             <span className="icon">{SidebarSignup}</span>
             <span className="label">Sign Up</span>
           </NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
     </>
   );

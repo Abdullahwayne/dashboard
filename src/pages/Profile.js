@@ -226,7 +226,8 @@ function Profile() {
           </Card>
         </Col> */}
       </Row>
-      <Card
+      
+      {/* <Card
         bordered={false}
         className='header-solid mb-24'
         title={
@@ -281,7 +282,7 @@ function Profile() {
             </Upload>
           </Col>
         </Row>
-      </Card>
+      </Card> */}
     </>
   )
 }

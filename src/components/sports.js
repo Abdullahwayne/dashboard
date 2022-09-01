@@ -14,8 +14,9 @@ const Sports = () => {
     <div className="sports-container">
       <div className="sports-container-parent">
         <div className="site-card-border-less-wrapper" style={{display:"flex", flexWrap:"wrap", gap:"25px", width:"100%"}}>
+          
           <Card
-            title="Live Score"
+            title = {<h1 style={{color:"#191970", fontSize:"30px", fontWeight:"bold"}}>Live Score</h1>}
             bordered={true}
             style={{
               width: "48%",
@@ -23,6 +24,8 @@ const Sports = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              color:"#B22222",
+              fontWeight:"bold"
             }}
           >
             <div
@@ -31,6 +34,7 @@ const Sports = () => {
                 justifyContent: "space-between",
                 width: "100%",
                 gap: "30px",
+                color:"#B22222",
               }}
             >
               <p>News Boston</p>
@@ -56,7 +60,7 @@ const Sports = () => {
             </div>
           </Card>
           <Card
-            title="Live Score"
+            title={<h1 style={{color:"#191970", fontSize:"30px", fontWeight:"bold"}}>Live Score</h1>}
             bordered={true}
             style={{
               width: "48%",
@@ -64,6 +68,9 @@ const Sports = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              color:"#B22222",
+              fontWeight:"bold"
+              
             }}
           >
             <div
@@ -97,7 +104,7 @@ const Sports = () => {
             </div>
           </Card>
           <Card
-            title="Live Score"
+            title={<h1 style={{color:"#191970", fontSize:"30px", fontWeight:"bold"}}>Live Score</h1>}
             bordered={true}
             style={{
               width: "48%",
@@ -105,6 +112,8 @@ const Sports = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              color:"#B22222",
+              fontWeight:"bold"
             }}
           >
             <div className="ant-card-">
@@ -140,7 +149,7 @@ const Sports = () => {
             </div>
           </Card>
           <Card
-            title="Live Score"
+            title={<h1 style={{color:"#191970", fontSize:"30px", fontWeight:"bold"}}>Live Score</h1>}
             bordered={true}
             style={{
               width: "48%",
@@ -148,6 +157,8 @@ const Sports = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              color:"#B22222",
+              fontWeight:"bold"
             }}
           >
             <div

@@ -37,7 +37,7 @@ function Tables() {
                 <Table
                   columns={TableColumns}
                   dataSource={TableData}
-                  pagination={false}
+                  pagination={true}
                   className="ant-border-space"
                 />
               </div>
