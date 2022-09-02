@@ -11,9 +11,11 @@ import {
   Radio,
   Switch,
   Upload,
+  Space ,
   message,
 } from 'antd'
-
+import { Input, Modal, Select, Table,Form } from "antd";
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import {
   FacebookOutlined,
   TwitterOutlined,
@@ -41,7 +43,80 @@ function Profile() {
     reader.addEventListener('load', () => callback(reader.result))
     reader.readAsDataURL(img)
   }
+const { confirm } = Modal;
 
+const showConfirm = () => {
+  confirm({
+    title: 'Do you Want to delete these items?',
+    icon: <ExclamationCircleOutlined />,
+    content: 'Some descriptions',
+
+    onOk() {
+      console.log('OK');
+    },
+
+    onCancel() {
+      console.log('Cancel');
+    },
+  });
+};
+
+const showPromiseConfirm = () => {
+  confirm({
+    title: 'Do you want to delete these items?',
+    icon: <ExclamationCircleOutlined />,
+    content: 'When clicked the OK button, this dialog will be closed after 1 second',
+
+    onOk() {
+      return new Promise((resolve, reject) => {
+        setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+      }).catch(() => console.log('Oops errors!'));
+    },
+
+    onCancel() {},
+  });
+};
+
+const showDeleteConfirm = () => {
+  confirm({
+    title: 'Are you sure you want to suspend this account?',
+    icon: <ExclamationCircleOutlined />,
+    content: 'This may take some time to make it active',
+    okText: 'Yes',
+    okType: 'danger',
+    cancelText: 'No',
+
+    onOk() {
+      console.log('OK');
+    },
+
+    onCancel() {
+      console.log('Cancel');
+    },
+  });
+};
+
+const showPropsConfirm = () => {
+  confirm({
+    title: 'Are you sure delete this task?',
+    icon: <ExclamationCircleOutlined />,
+    content: 'Some descriptions',
+    okText: 'Yes',
+    okType: 'danger',
+    okButtonProps: {
+      disabled: true,
+    },
+    cancelText: 'No',
+
+    onOk() {
+      console.log('OK');
+    },
+
+    onCancel() {
+      console.log('Cancel');
+    },
+  });
+};
   const beforeUpload = (file) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
     if (!isJpgOrPng) {
@@ -66,12 +141,53 @@ function Profile() {
       })
     }
   }
+  
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+  const [form] = Form.useForm();
+  const [formLayout, setFormLayout] = useState('horizontal');
+  const onFormLayoutChange = ({ layout }) => {
+    setFormLayout(layout);
+  };
+  const formItemLayout =
+    formLayout === 'horizontal'
+      ? {
+          labelCol: {
+            span: 4,
+          },
+          wrapperCol: {
+            span: 14,
+          },
+        }
+      : null;
+  const buttonItemLayout =
+    formLayout === 'horizontal'
+      ? {
+          wrapperCol: {
+            span: 14,
+            offset: 4,
+          },
+        }
+      : null;
+      const { Option } = Select;
+
+      // const handleChange = (value) => {
+      //   console.log(`selected ${value}`);
+      // };
 
   return (
     <>
       <div
         className='profile-nav-bg'
-        style={{ backgroundImage: 'url(' + BgProfile + ')' }}
+        style={{ backgroundImage: 'url(' + BgProfile + ')', }}
       ></div>
 
       <Card
@@ -83,13 +199,13 @@ function Profile() {
               <Avatar.Group>
                 <Avatar size={74} shape='square' src={profilavatar} />
 
-                <div className='avatar-info'>
+                <div className='avatar-info' style={{}}>
                   <h4 className='font-semibold m-0'>Sarah Jacob</h4>
                   <p>CEO / Co-Founder</p>
                 </div>
               </Avatar.Group>
             </Col>
-            <Col
+            <Col 
               span={24}
               md={12}
               style={{
@@ -97,9 +213,10 @@ function Profile() {
                 alignItems: 'center',
                 justifyContent: 'flex-end',
               }}
+             
             > 
               <Radio.Group defaultValue='a'>
-              <Button type="primary" value='a' danger>
+              <Button type="primary"onClick={showDeleteConfirm} value='a' danger>
       Suspend
     </Button>
                 {/* <Radio.Button value='a'>OVERVIEW</Radio.Button> */}
@@ -111,7 +228,7 @@ function Profile() {
         }
       ></Card>
 
-      <Row gutter={[24, 0]}>
+      <Row gutter={[24, 0]} >
         {/* <Col span={24} md={8} className='mb-24 '>
           <Card
             bordered={false}
@@ -160,7 +277,7 @@ function Profile() {
             bordered={false}
             title={<h6 className='font-semibold m-0'>Profile Information</h6>}
             className='header-solid h-full card-profile-information'
-            extra={<Button type='link'>{ProfilePencil}</Button>}
+            extra={<Button type='link' onClick={showModal}>{ProfilePencil}</Button>}
             bodyStyle={{ paddingTop: 0, paddingBottom: 16 }}
           >
             <p className='text-dark'>
@@ -184,18 +301,47 @@ function Profile() {
               <Descriptions.Item label='Location' span={3}>
                 USA
               </Descriptions.Item>
-              <Descriptions.Item label='Social' span={3}>
-                <a href='#pablo' className='mx-5 px-5'>
-                  {<TwitterOutlined />}
-                </a>
-                <a href='#pablo' className='mx-5 px-5'>
-                  {<FacebookOutlined style={{ color: '#344e86' }} />}
-                </a>
-                <a href='#pablo' className='mx-5 px-5'>
-                  {<InstagramOutlined style={{ color: '#e1306c' }} />}
-                </a>
-              </Descriptions.Item>
+             
             </Descriptions>
+            <Modal
+                  title="Edit Profile"
+                  visible={isModalVisible}
+                  onOk={handleOk}
+                  okText="Submit"
+                  onCancel={handleCancel}
+                >
+                <Form
+      
+      
+      form={form}
+      initialValues={{
+        layout: formLayout,
+      }}
+      // onValuesChange={onFormLayoutChange}
+    >
+     
+        
+      
+      <Form.Item label="Full Name">
+        <Input placeholder="Full Name" />
+      </Form.Item>
+      <Form.Item label="About yourself">
+        <Input placeholder="For ex. Hi this is Jacob..." />
+      </Form.Item>
+     
+      <Form.Item label="Mobile number">
+        <Input placeholder="Mobile Number" />
+      </Form.Item>
+  <Form.Item label="Email">
+        <Input placeholder="Email" />
+      </Form.Item>
+      <Form.Item label="Location">
+        <Input placeholder="Location" />
+      </Form.Item>
+      
+    </Form>
+  
+                </Modal>
           </Card>
         </Col>
         {/* <Col span={2} md={2} className='mb-24'>
@@ -225,6 +371,7 @@ function Profile() {
             
           </Card>
         </Col> */}
+
       </Row>
       
       {/* <Card

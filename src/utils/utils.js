@@ -541,13 +541,13 @@ export const MedicaldataColumns =
     key: "availability",
     render: (text) => {
       return (
-        <a style={text == "injured" || text == "unavailable" || text == "Injured" || text == "Unavailable" ? { color: "red" } : { color: "green" }}>
+        <a style={text == "Injured" || text == "Unavailable"  ? { color: "red" } : { color: "green" }}>
           {text}
         </a>
       );
     },
   },
-
+  
   {
     title: "Attendance",
     dataIndex: "attendance",
@@ -1049,8 +1049,9 @@ export const TableData = [
     employed: (
       <>
         <div className="ant-employed">
-          <span>23/04/18</span>
-          <a href="#pablo">Edit</a>
+         
+          <a>Edit</a>
+          
         </div>
       </>
     ),
