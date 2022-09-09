@@ -1,5 +1,4 @@
-
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   Layout,
   Menu,
@@ -21,28 +20,87 @@ import {
   InstagramOutlined,
   GithubOutlined,
 } from "@ant-design/icons";
-import { SignupProfile, SignupSignin, SignupSignup, SignupTemplate } from "../utils/utils";
+import {
+  SignupProfile,
+  SignupSignin,
+  SignupSignup,
+  SignupTemplate,
+} from "../utils/utils";
+import { gql, useMutation } from "@apollo/client";
+import { REGISTER_USER } from "../graphql/mutations/userMutations";
+import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const { Title } = Typography;
-const { Header, Footer, Content } = Layout;
+export default function SignUp() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
 
-export default class SignUp extends Component {
-  render() {
-    const onFinish = (values) => {
-      console.log("Success:", values);
-    };
+  const { Title } = Typography;
+  const { Header, Footer, Content } = Layout;
+  let history = useHistory();
 
-    const onFinishFailed = (errorInfo) => {
-      console.log("Failed:", errorInfo);
-    };
-    return (
-      <>
-        <div className="layout-default ant-layout layout-sign-up">
-          <Header>
-            <div className="header-col header-brand">
-              <h5>Stats JR Admin Dashboard</h5>
-            </div>
-            {/* <div className="header-col header-nav">
+  const [RegisterUser, { data, loading, error }] = useMutation(REGISTER_USER, {
+    variables: {
+      registerInput: {
+        firstname: firstName,
+        lastname: lastName,
+        phone: phone,
+        email: email,
+        password: password,
+      },
+    },
+  });
+  if (error) console.log("ERROR: ", error);
+  if (loading) console.log("LOADING...");
+
+  const onFinish = async (e) => {
+    try {
+      if (email && password && firstName && lastName && phone) {
+        let response = await RegisterUser({
+          firstname: firstName,
+          lastname: lastName,
+          phone: phone,
+          email: email,
+          password: password,
+        });
+        console.log("response", response.data.registerUser);
+        if (response && !error) {
+          history.push("/");
+        }
+      } else {
+        alert("Please fill the fields");
+      }
+    } catch (err) {
+      console.log("Exception Error:", err);
+    }
+  };
+
+  function onChange(checked) {
+    console.log(`switch to ${checked}`);
+  }
+
+  // const onFinishFailed = (errorInfo) => {
+  //   console.log("Failed:", errorInfo);
+  // };
+
+  // const onFinish = (values) => {
+  //   console.log("Success:", values);
+  // };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+  return (
+    <>
+      <div className="layout-default ant-layout layout-sign-up">
+        <Header>
+          <div className="header-col header-brand">
+            <h5>Stats JR Admin Dashboard</h5>
+          </div>
+          {/* <div className="header-col header-nav">
               <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
                 <Menu.Item key="1">
                   <Link to="/dashboard">
@@ -70,27 +128,27 @@ export default class SignUp extends Component {
                 </Menu.Item>
               </Menu>
             </div> */}
-            {/* <div className="header-col header-btn">
+          {/* <div className="header-col header-btn">
               <Button type="false">FREE DOWNLOAD</Button>
             </div> */}
-          </Header>
+        </Header>
 
-          <Content className="p-0">
-            <div className="sign-up-header">
-              <div className="content">
-                <Title>Sign Up</Title>
-                <p className="text-lg">
+        <Content className="p-0">
+          <div className="sign-up-header">
+            <div className="content">
+              <Title>Sign Up</Title>
+              <p className="text-lg">
                 Get yourself registered to use the admin dashboard.
-                </p>
-              </div>
+              </p>
             </div>
+          </div>
 
-            <Card
-              className="card-signup header-solid h-full ant-card pt-0"
-              title={<h5>Registration Page</h5>}
-              bordered="false"
-            >
-              {/* <div className="sign-up-gateways">
+          <Card
+            className="card-signup header-solid h-full ant-card pt-0"
+            title={<h5>Registration Page</h5>}
+            bordered="false"
+          >
+            {/* <div className="sign-up-gateways">
                 <Button type="false">
                   <img src={logo1} alt="logo 1" />
                 </Button>
@@ -101,67 +159,118 @@ export default class SignUp extends Component {
                   <img src={logo3} alt="logo 3" />
                 </Button>
               </div> */}
-              {/* <p className="text-center my-25 font-semibold text-muted">Or</p> */}
-              <Form
-                name="basic"
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                className="row-col"
+            {/* <p className="text-center my-25 font-semibold text-muted">Or</p> */}
+            <Form
+              name="basic"
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              // onFinishFailed={onFinishFailed}
+              className="row-col"
+            >
+              <Form.Item
+                name="FirstName"
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Last Name!",
+                  },
+                ]}
               >
-                <Form.Item
-                  name="Name"
-                  rules={[
-                    { required: true, message: "Please input your username!" },
-                  ]}
-                >
-                  <Input placeholder="Name" />
-                </Form.Item>
-                <Form.Item
-                  name="email"
-                  rules={[
-                    { required: true, message: "Please input your email!" },
-                  ]}
-                >
-                  <Input placeholder="email" />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={[
-                    { required: true, message: "Please input your password!" },
-                  ]}
-                >
-                  <Input placeholder="Passwoed" />
-                </Form.Item>
+                <Input placeholder="First Name" />
+              </Form.Item>
+              <Form.Item
+                name="LastName"
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your First Name!",
+                  },
+                ]}
+              >
+                <Input placeholder="Last Name" />
+              </Form.Item>
+              <Form.Item
+                name="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Email!",
+                  },
+                ]}
+              >
+                <Input placeholder="email" />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                type="password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                  },
+                ]}
+              >
+                <Input placeholder="Password" />
+              </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked">
-                  <Checkbox>
-                    I agree the{" "}
-                    <a href="#pablo" className="font-bold text-dark">
-                      Terms and Conditions
-                    </a>
-                  </Checkbox>
-                </Form.Item>
+              <Form.Item
+                name="phone"
+                type="phone"
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your phone!",
+                  },
+                ]}
+              >
+                <Input placeholder="Type your phone number" />
+              </Form.Item>
 
-                <Form.Item>
-                  <Button
-                    style={{ width: "100%" }}
-                    type="primary"
-                    htmlType="submit"
-                  >
-                    SIGN UP
-                  </Button>
-                </Form.Item>
-              </Form>
-              <p className="font-semibold text-muted text-center">
-                Already have an account?{" "}
-                <Link to="/sign-in" className="font-bold text-dark">
-                  Sign In
-                </Link>
-              </p>
-            </Card>
-          </Content>
-          {/* <Footer>
+              <Form.Item name="remember" valuePropName="checked">
+                <Checkbox>
+                  I agree the{" "}
+                  <a href="#pablo" className="font-bold text-dark">
+                    Terms and Conditions
+                  </a>
+                </Checkbox>
+              </Form.Item>
+
+              <Form.Item>
+                <Button
+                  style={{ width: "100%" }}
+                  type="primary"
+                  htmlType="submit"
+                  // onClick={onFinish}
+                >
+                  SIGN UP
+                </Button>
+              </Form.Item>
+              {error ? <p style={{ color: "red" }}> {error.message} </p> : null}
+            </Form>
+            <p className="font-semibold text-muted text-center">
+              Already have an account?{" "}
+              <Link to="/sign-in" className="font-bold text-dark">
+                Sign In
+              </Link>
+            </p>
+          </Card>
+        </Content>
+        {/* <Footer>
             <Menu mode="horizontal">
               <Menu.Item>Company</Menu.Item>
               <Menu.Item>About Us</Menu.Item>
@@ -201,8 +310,7 @@ export default class SignUp extends Component {
               Copyright © 2021 Muse by <a href="#pablo">Creative Tim</a>.{" "}
             </p>
           </Footer> */}
-        </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }

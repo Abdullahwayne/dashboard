@@ -117,6 +117,7 @@ const showPropsConfirm = () => {
     },
   });
 };
+const { TextArea } = Input;
   const beforeUpload = (file) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
     if (!isJpgOrPng) {
@@ -326,7 +327,7 @@ const showPropsConfirm = () => {
         <Input placeholder="Full Name" />
       </Form.Item>
       <Form.Item label="About yourself">
-        <Input placeholder="For ex. Hi this is Jacob..." />
+      <TextArea rows={4} placeholder="For ex. Hi this is Jacob..." />
       </Form.Item>
      
       <Form.Item label="Mobile number">

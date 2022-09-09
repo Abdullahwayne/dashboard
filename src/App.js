@@ -12,25 +12,29 @@ import "./assets/styles/responsive.css";
 import Player from "./pages/Player";
 import Sports from "./components/sports";
 import Medical from "./pages/Medical";
+import { client } from "./config/config.js";
+import { ApolloProvider } from "@apollo/client";
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route path="/sign-up" exact component={SignUp} />
-        <Route path="/sign-in" exact component={SignIn} />
-        <Main>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/tables" component={Tables} />
-          <Route exact path="/billing" component={Billing} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/player" component={Player}></Route>
-          <Route exact path="/sports" component={Sports} />
-          <Route exact path="/medical" component={Medical} />
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Switch>
+          <Route path="/sign-up" exact component={SignUp} />
+          <Route path="/sign-in" exact component={SignIn} />
+          <Main>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/tables" component={Tables} />
+            <Route exact path="/billing" component={Billing} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/player" component={Player}></Route>
+            <Route exact path="/sports" component={Sports} />
+            <Route exact path="/medical" component={Medical} />
 
-          {/* <Redirect from='*' to='/dashboard' /> */}
-        </Main>
-      </Switch>
-    </div>
+            {/* <Redirect from='*' to='/dashboard' /> */}
+          </Main>
+        </Switch>
+      </div>
+    </ApolloProvider>
   );
 }
 

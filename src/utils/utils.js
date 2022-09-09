@@ -970,9 +970,9 @@ export const TableColumns = [
     width: "32%",
   },
   {
-    title: "FUNCTION",
-    dataIndex: "function",
-    key: "function",
+    title: "Role",
+    dataIndex: "role",
+    key: "role",
   },
 
   // {
@@ -981,9 +981,14 @@ export const TableColumns = [
   //   dataIndex: 'status',
   // },
   {
-    title: "EMPLOYED",
-    key: "employed",
-    dataIndex: "employed",
+    title: "Attendance",
+    key: "attendance",
+    dataIndex: "attendance",
+  },
+  {
+    title: "Action",
+    key: "action",
+    dataIndex: "action",
   },
 ];
 export const PlayerColumns = [
@@ -1030,23 +1035,23 @@ export const TableData = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    role: (
       <>
         <div className="author-info">
-          <Title level={5}>Manager</Title>
-          <p>Organization</p>
+          <Title level={5} >Student</Title>
+          <p></p>
         </div>
       </>
     ),
 
-    status: (
+    attendance: (
       <>
-        <Button type="primary" className="tag-primary">
-          ONLINE
+        <Button type="primary"style={{width:"20%"}} className="tag-primary">
+          68%
         </Button>
       </>
     ),
-    employed: (
+    action: (
       <>
         <div className="ant-employed">
          
@@ -1075,24 +1080,24 @@ export const TableData = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    role: (
       <>
         <div className="author-info">
-          <Title level={5}>Programator</Title>
-          <p>Developer</p>
+          <Title level={5}>Athlete</Title>
+          
         </div>
       </>
     ),
 
-    status: (
+    attendance: (
       <>
-        <Button className="tag-badge">ONLINE</Button>
+        <Button className="tag-badge" style={{backgroundColor:"red", width:"20%"}}>22%</Button>
       </>
     ),
-    employed: (
+    action: (
       <>
         <div className="ant-employed">
-          <span>23/12/20</span>
+          
           <a href="#pablo">Edit</a>
         </div>
       </>
@@ -1117,26 +1122,26 @@ export const TableData = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    role: (
       <>
         <div className="author-info">
-          <Title level={5}>Executive</Title>
-          <p>Projects</p>
+          <Title level={5}>Coach</Title>
+        
         </div>
       </>
     ),
 
-    status: (
+    attendance: (
       <>
-        <Button type="primary" className="tag-primary">
-          ONLINE
+        <Button type="primary" className="tag-primary" style={{width:"20%"}}>
+          58%
         </Button>
       </>
     ),
-    employed: (
+    action: (
       <>
         <div className="ant-employed">
-          <span>03/04/21</span>
+        
           <a href="#pablo">Edit</a>
         </div>
       </>
@@ -1160,26 +1165,26 @@ export const TableData = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    role: (
       <>
         <div className="author-info">
-          <Title level={5}>Marketing</Title>
-          <p>Organization</p>
+          <Title level={5}>Player</Title>
+         
         </div>
       </>
     ),
 
-    status: (
+    attendance: (
       <>
-        <Button type="primary" className="tag-primary">
-          ONLINE
+        <Button type="primary" className="tag-primary" style={{width:"20%"}}>
+          78%
         </Button>
       </>
     ),
-    employed: (
+    action: (
       <>
         <div className="ant-employed">
-          <span>03/04/21</span>
+        
           <a href="#pablo">Edit</a>
         </div>
       </>
@@ -1203,24 +1208,24 @@ export const TableData = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    role: (
       <>
         <div className="author-info">
-          <Title level={5}>Manager</Title>
-          <p>Organization</p>
+          <Title level={5}>Student</Title>
+         
         </div>
       </>
     ),
 
-    status: (
+    attendance: (
       <>
-        <Button className="tag-badge">ONLINE</Button>
+        <Button className="tag-badge" style={{width:"20%", backgroundColor:"red"}}>18%</Button>
       </>
     ),
-    employed: (
+    action: (
       <>
         <div className="ant-employed">
-          <span>23/03/20</span>
+       
           <a href="#pablo">Edit</a>
         </div>
       </>
@@ -1245,25 +1250,25 @@ export const TableData = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    role: (
       <>
         <div className="author-info">
-           <Title level={5}>Tester</Title>
-          <p>Developer</p>
+           <Title level={5}>Athlete</Title>
+         
         </div>
       </>
     ),
 
-    status: (
+  attendance: (
       <>
-        <Button className="tag-badge">ONLINE</Button>
+        <Button className="tag-badge" style={{width:"20%", backgroundColor:"red"}}>48%</Button>
       </>
     ),
-    employed: (
+    action: (
       <>
         <div className="ant-employed">
-          <span>14/04/17</span>
-          <a href="#pablo">Edit</a>
+        
+          <a>pEdit</a>
         </div>
       </>
     ),

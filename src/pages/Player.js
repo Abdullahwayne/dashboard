@@ -84,9 +84,9 @@ function Player() {
                   pagination={true}
                   className="ant-border-space"
                   onClick={showModal}
-                  visible={isModalVisible}
+                 
                 />
-
+              
                 <Modal
                   title="Add Atheletes"
                   visible={isModalVisible}
@@ -124,8 +124,8 @@ function Player() {
       <Option value="student">Student</Option>
      
       <Option value="superadmin ">Super Admin</Option>
-      <Option value="superadmin ">Coach</Option>
-      <Option value="superadmin ">Athlete</Option>
+      <Option value="coach ">Coach</Option>
+      <Option value="athlete ">Athlete</Option>
 
   </Select>
   </Form.Item>

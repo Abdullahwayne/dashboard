@@ -1,4 +1,4 @@
-import { Row, Col, Card, Radio, Table, Upload, Button } from "antd";
+import { Row, Col, Card, Radio, Table, Upload, Button, Modal } from "antd";
 
 import { ToTopOutlined } from "@ant-design/icons";
 
@@ -27,7 +27,7 @@ function Tables() {
               extra={
                 <>
                   <Radio.Group onChange={onChange} defaultValue="a">
-                    <Radio.Button value="a">All</Radio.Button>
+                    {/* <Radio.Button value="a">All</Radio.Button> */}
                     {/* <Radio.Button value='b'>ONLINE</Radio.Button> */}
                   </Radio.Group>
                 </>
@@ -39,7 +39,9 @@ function Tables() {
                   dataSource={TableData}
                   pagination={true}
                   className="ant-border-space"
+                // onClick={Modal}
                 />
+               
               </div>
             </Card>
 
