@@ -13,14 +13,16 @@ import Player from "./pages/Player";
 import Sports from "./components/sports";
 import Medical from "./pages/Medical";
 import { client } from "./config/config.js";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider, InMemoryCache } from "@apollo/client";
 function App() {
+
+  
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <Switch>
           <Route path="/sign-up" exact component={SignUp} />
-          <Route path="/sign-in" exact component={SignIn} />
+          <Route path="/sign-in" exact component={SignIn}  />
           <Main>
             <Route exact path="/" component={Home} />
             <Route exact path="/tables" component={Tables} />

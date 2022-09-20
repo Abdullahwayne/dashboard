@@ -27,46 +27,46 @@ import {
   SignupTemplate,
 } from "../utils/utils";
 import { gql, useMutation } from "@apollo/client";
-import { REGISTER_USER } from "../graphql/mutations/userMutations";
+import { REGISTER_ADMIN, REGISTER_USER } from "../graphql/mutations/userMutations";
 import { useNavigate } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
 
   const { Title } = Typography;
   const { Header, Footer, Content } = Layout;
   let history = useHistory();
 
-  const [RegisterUser, { data, loading, error }] = useMutation(REGISTER_USER, {
+  const [registerAdmin, { data, loading, error }] = useMutation(REGISTER_ADMIN, {
     variables: {
-      registerInput: {
-        firstname: firstName,
-        lastname: lastName,
-        phone: phone,
-        email: email,
-        password: password,
-      },
+      registerAdminInput: {
+        username,
+        email,
+        password,
+        role: "ADMIN"
+      }
     },
   });
   if (error) console.log("ERROR: ", error);
   if (loading) console.log("LOADING...");
 
   const onFinish = async (e) => {
+    
+    console.log(email , password , username);
     try {
-      if (email && password && firstName && lastName && phone) {
-        let response = await RegisterUser({
-          firstname: firstName,
-          lastname: lastName,
-          phone: phone,
+      if (email && password && username  ) {
+        let response = await registerAdmin({
+          
+          username: username,
           email: email,
           password: password,
         });
-        console.log("response", response.data.registerUser);
+        console.log("response", response.data.registerAdmin);
         if (response && !error) {
           history.push("/");
         }
@@ -168,9 +168,9 @@ export default function SignUp() {
               className="row-col"
             >
               <Form.Item
-                name="FirstName"
+                name="Username"
                 onChange={(e) => {
-                  setFirstName(e.target.value);
+                  setUsername(e.target.value);
                 }}
                 rules={[
                   {
@@ -179,9 +179,9 @@ export default function SignUp() {
                   },
                 ]}
               >
-                <Input placeholder="First Name" />
+                <Input placeholder="Username" />
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 name="LastName"
                 onChange={(e) => {
                   setLastName(e.target.value);
@@ -194,7 +194,7 @@ export default function SignUp() {
                 ]}
               >
                 <Input placeholder="Last Name" />
-              </Form.Item>
+              </Form.Item> */}
               <Form.Item
                 name="email"
                 onChange={(e) => {
@@ -207,9 +207,10 @@ export default function SignUp() {
                   },
                 ]}
               >
-                <Input placeholder="email" />
+                <Input placeholder="Email" />
               </Form.Item>
               <Form.Item
+               
                 name="password"
                 type="password"
                 onChange={(e) => {
@@ -222,7 +223,7 @@ export default function SignUp() {
                   },
                 ]}
               >
-                <Input placeholder="Password" />
+                <Input.Password placeholder="Password" />
               </Form.Item>
 
               <Form.Item

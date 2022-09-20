@@ -69,7 +69,7 @@ function Header({
           </div>
         </Col>
         <Col span={24} md={18} className="header-control">
-          <Badge size="small" count={4}>
+          {/* <Badge size="small" count={4}>
             <Dropdown overlay={HeaderMenu} trigger={["click"]}>
               <a
                 href="#pablo"
@@ -79,7 +79,7 @@ function Header({
                 {HeaderBell}
               </a>
             </Dropdown>
-          </Badge>
+          </Badge> */}
           {/* <Button type="link" onClick={showDrawer}>
             {HeaderLogSetting}
           </Button>
@@ -197,10 +197,10 @@ function Header({
               </div>
             </div>
           </Drawer>
-          <Link to="/sign-in" className="btn-sign-in">
+          {/* <Link to="/sign-in" className="btn-sign-in">
             {HeaderProfile}
             <span>Sign in</span>
-          </Link>
+          </Link> */}
           {/* <Input
             className="header-search"
             placeholder="Type here..."

@@ -42,6 +42,7 @@ import {
   PlusOutlined,
   ExclamationOutlined,
   VerticalAlignTopOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import useSelection from "antd/lib/table/hooks/useSelection";
 
@@ -962,35 +963,54 @@ export const TableFormProps = {
   },
 };
 // table code start
-export const TableColumns = [
-  {
-    title: "AUTHOR",
-    dataIndex: "name",
-    key: "name",
-    width: "32%",
-  },
-  {
-    title: "Role",
-    dataIndex: "role",
-    key: "role",
-  },
+// export const TableColumns = [
+//   {
+//     title: "First Name",
+//     dataIndex: "firstname",
+//     key: "firstname",
+//     width: "32%",
+//     render:(text,props)=>{
+//       return(
+//         <a >{text}</a>
+//       )
+//     }
+//   },
+//   {
+//     title: "Last Name",
+//     dataIndex: "lastname",
+//     key: "lastname",
+//     width: "32%",
+//   },
+//   {
+//     title: "Role",
+//     dataIndex: "role",
+//     key: "role",
+//   },
+  
 
-  // {
-  //   title: 'STATUS',
-  //   key: 'status',
-  //   dataIndex: 'status',
-  // },
-  {
-    title: "Attendance",
-    key: "attendance",
-    dataIndex: "attendance",
-  },
-  {
-    title: "Action",
-    key: "action",
-    dataIndex: "action",
-  },
-];
+//   // {
+//   //   title: 'STATUS',
+//   //   key: 'status',
+//   //   dataIndex: 'status',
+//   // },
+//   {
+//     title: "Attendance",
+//     key: "attendance",
+//     dataIndex: "attendance",
+//     render: ()=> {
+//       <EditOutlined 
+//         style={{color:'red'}}d
+//       />
+//     }
+//   },
+//   {
+//     title: "Action",
+//     dataIndex: "",
+//     key: "",
+//     render:()
+//   },
+  
+// ];
 export const PlayerColumns = [
   {
     title: "AUTHOR",

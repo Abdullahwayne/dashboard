@@ -2179,6 +2179,7 @@ body {
 /* sign in end */
 
 @media (min-width: 768px) {
+  
   .sign-img img {
     margin: 0;
   }
@@ -2188,6 +2189,10 @@ body {
   .card-signup .sign-up-gateways .ant-btn {
     width: 100px;
   }
+  .ant-row .ant-row-space-around
+{
+  display: flex;
+}  
 }
 
 /* end sign up */
@@ -3038,3 +3043,4 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
   path {
   fill: #8c8c8c;
 }
+

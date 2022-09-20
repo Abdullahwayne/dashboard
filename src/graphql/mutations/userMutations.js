@@ -1,27 +1,39 @@
 import { gql } from "@apollo/client";
 
-const LOGIN_USER = gql`
-  mutation Mutation($loginInput: LoginInput) {
-    loginUser(loginInput: $loginInput) {
-      firstname
-      lastname
-      phone
+const LOGIN_ADMIN = gql`
+  mutation Mutation($loginAdminInput: LoginAdminInput) {
+    loginAdmin(loginAdminInput: $loginAdminInput) {
+      id
+     
       email
       token
     }
   }
 `;
 
-const REGISTER_USER = gql`
-  mutation Mutation($registerInput: RegisterInput) {
-    registerUser(registerInput: $registerInput) {
-      firstname
-      lastname
-      phone
-      email
-      token
-    }
+const REGISTER_ADMIN = gql`
+mutation Mutation($registerAdminInput: RegisterAdminInput) {
+  registerAdmin(registerAdminInput: $registerAdminInput) {
+    id
+    username
+    email
+    token
+    role
   }
+}
 `;
+const DELETE_USER = gql`
 
-export { LOGIN_USER, REGISTER_USER };
+mutation DeleteUser($id: ID!) {
+  deleteUser(ID: $id) {
+    id
+    firstname
+    lastname
+    email
+    password
+    phone
+    role
+  }
+}`
+
+export { LOGIN_ADMIN, REGISTER_ADMIN,DELETE_USER };
