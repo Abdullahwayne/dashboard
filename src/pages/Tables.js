@@ -47,6 +47,7 @@ function Users({ user }) {
         },
       });
     },
+    //
   });
   const onChange = (e) => console.log(`radio checked:${e.target.value}`);
   const { loading, error, data } = useQuery(ALL_USERS, {
