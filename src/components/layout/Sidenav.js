@@ -27,7 +27,7 @@ function Sidenav({ color }) {
             <span
               className="icon"
               style={{
-                // background: page === "" ? color : "",
+                background: page === "tables" ? color : "",
               }}
             >
               {SidebarDashboard}
@@ -48,8 +48,8 @@ function Sidenav({ color }) {
             <span className="label">Coach</span>
           </NavLink>
         </Menu.Item> */}
-        <Menu.Item key="3">
-          <NavLink to="/player">
+        <Menu.Item key="2">
+          <NavLink to="/athlete">
             <span
               className="icon"
               style={{
@@ -74,7 +74,7 @@ function Sidenav({ color }) {
             <span className="label">Teacher</span>
           </NavLink>
         </Menu.Item> */}
-        <Menu.Item key="5">
+        <Menu.Item key="3">
           <NavLink to="/medical">
             <span
               className="icon"
@@ -87,7 +87,7 @@ function Sidenav({ color }) {
             <span className="label">Medical</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="6">
+        <Menu.Item key="4">
           <NavLink to="/sports">
             <span
               className="icon"
@@ -98,6 +98,32 @@ function Sidenav({ color }) {
               {SidebarTables}
             </span>
             <span className="label">Sports</span>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <NavLink to="/groups">
+            <span
+              className="icon"
+              style={{
+                background: page === "groups" ? color : "",
+              }}
+            >
+              {SidebarSignin}
+            </span>
+            <span className="label">Groups</span>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <NavLink to="/events">
+            <span
+              className="icon"
+              style={{
+                background: page === "events" ? color : "",
+              }}
+            >
+              {SidebarSignin}
+            </span>
+            <span className="label">Events</span>
           </NavLink>
         </Menu.Item>
         {/* <Menu.Item key='3'>
@@ -130,7 +156,7 @@ function Sidenav({ color }) {
           </NavLink>
         </Menu.Item>
         <Menu.Item key="7">
-          <NavLink to="/tables">
+          <NavLink to="/users">
             <span className="icon">{SidebarSignin}</span>
             <span className="label">Users</span>
           </NavLink>

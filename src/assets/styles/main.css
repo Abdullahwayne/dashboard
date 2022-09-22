@@ -974,9 +974,8 @@ button.ant-btn.bell strong {
   padding-top: 15px;
 }
 .bar-chart {
-  background: transparent
-    linear-gradient(62deg, #F05454 0%, #FF00FF 73%, #FF00FF	 100%) 0% 0%
-    no-repeat padding-box;
+  background: rgb(147,77,207);
+background: linear-gradient(90deg, rgba(147,77,207,1) 39%, rgba(221,77,77,1) 100%);
   box-shadow: 0px 4px 6px #0000001f;
 
   border-radius: 8px;
@@ -1478,6 +1477,7 @@ span.ismobile {
   line-height: 60px;
   position: fixed;
   cursor: pointer;
+  display:none;
 }
 
 ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav li:active {
@@ -1512,6 +1512,7 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav li svg path {
   padding-right: 24px;
   padding-top: 14px;
   padding-bottom: 14px;
+  font-size: 16px;
 }
 .percent-progress .ant-progress-bg {
   height: 3px !important;
@@ -1526,6 +1527,12 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav li svg path {
 .tablespace .ant-card-head-title {
   font-size: 20px;
   font-weight: 600;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(94,0,172,1) 26%, rgba(0,212,255,1) 100%);
+  display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color:white
 }
 .ant-radio-button-wrapper:first-child {
   border-radius: 4px 0 0 4px;
@@ -1565,13 +1572,13 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav
 }
 
 .ant-table-tbody > tr > td h5 {
-  font-size: 14px;
+  font-size: 19px;
   font-weight: 600;
   color: #141414;
   margin-bottom: 0px;
 }
 .ant-table-tbody > tr > td p {
-  font-size: 14px;
+  font-size: 20px;
   color: #8c8c8c;
   margin: 0px;
 }
@@ -1925,6 +1932,7 @@ body {
 .ant-btn {
   box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
   border-radius: 6px;
+ 
 }
 .layout-sign-up .ant-layout-footer {
   padding: 24px 50px;

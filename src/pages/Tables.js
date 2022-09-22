@@ -97,14 +97,24 @@ function Users({ user }) {
 
   const [form] = Form.useForm();
   const [formCreate] = Form.useForm();
+  const [userData, setUserData] = useState("");
   const TableColumns = [
+    {
+      title: "NO",
+      dataIndex: "id",
+      key: "id",
+      width: "32%",
+      render: (data, index, element) => {
+        return <p  style= {{color :"#8A2BE2"}}onClick={console.log(element)}>{element + 1}</p>
+      },
+    },
     {
       title: "First Name",
       dataIndex: "firstname",
       key: "firstname",
       width: "32%",
       render: (text, props) => {
-        return <a style={{ color: "orchid" }}>{text}</a>;
+        return <p style={{ color: "#6A5ACD"}}>{text}</p>;
       },
     },
     {
@@ -113,7 +123,7 @@ function Users({ user }) {
       key: "lastname",
       width: "32%",
       render: (text) => {
-        return <a style={{ color: "orchid" }}>{text}</a>;
+        return <p style={{ color: "#6A5ACD" }}>{text}</p>;
       },
     },
     {
@@ -122,13 +132,16 @@ function Users({ user }) {
       key: "email",
       width: "32%",
       render: (text) => {
-        return <a style={{ color: "orchid" }}>{text}</a>;
+        return <p style={{ color: "#6A5ACD" }}>{text}</p>;
       },
     },
     {
       title: "Role",
       dataIndex: "role",
       key: "role",
+      render: (text) => {
+        return <p style={{ color: "#6A5ACD" }}>{text}</p>;
+      },
     },
 
     // {
@@ -140,13 +153,15 @@ function Users({ user }) {
       title: "Attendance",
       key: "",
       dataIndex: "",
-      render: () => {
-        return (
+      render:()=>{
+        return(
           <div>
-            <span>69%</span>
+            <p style={{ color: "#6A5ACD" }}> 65% </p>
           </div>
-        );
-      },
+        )
+      }
+     
+      
     },
     {
       title: "Action",
@@ -158,7 +173,10 @@ function Users({ user }) {
               style={{ color: "blue" }}
               onClick={() => {
                 editUserModal();
-                console.log("WORKING", isModalOpen);
+                setUserData(record)
+                console.log("ID", record);
+                console.log(userData, "bhai user data hai");
+                setId(record?.id);
               }}
             />
             <DeleteOutlined
@@ -205,7 +223,7 @@ function Users({ user }) {
             </div>
 
             <Modal
-              title="Basic Modal"
+              title="Edit Users"
               visible={isModalOpen}
               okText="Submit"
               onOk={handleOk}
@@ -216,15 +234,19 @@ function Users({ user }) {
 
                 // onValuesChange={onFormLayoutChange}
               >
-                <Form.Item label="First Name">
-                  <Input placeholder="John" />
+                
+                <Form.Item   label="First Name">
+                  <Input value={userData?.firstname} placeholder="John"  />
                 </Form.Item>
                 <Form.Item label="Last Name">
-                  <Input placeholder="Doe" />
+                  <Input value={userData?.lastname} placeholder="Doe" />
+                </Form.Item>
+                <Form.Item label="Email">
+                  <Input value={userData?.email} placeholder="Do@e" />
                 </Form.Item>
                 <Form.Item label="Roles">
                   <Select
-                    defaultValue="player"
+                    value={userData?.role}
                     style={{
                       width: 120,
                     }}
@@ -238,8 +260,10 @@ function Users({ user }) {
                     <Option value="athlete ">Athlete</Option>
                   </Select>
                 </Form.Item>
+             
               </Form>
             </Modal>
+           
           </Card>
         </Col>
       </Row>

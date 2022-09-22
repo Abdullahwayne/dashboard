@@ -14,6 +14,9 @@ import Sports from "./components/sports";
 import Medical from "./pages/Medical";
 import { client } from "./config/config.js";
 import { ApolloProvider, InMemoryCache } from "@apollo/client";
+import { Group } from "antd/lib/avatar";
+import Groups from "./pages/Group";
+import Event from "./pages/Event";
 function App() {
 
   
@@ -25,12 +28,16 @@ function App() {
           <Route path="/sign-in" exact component={SignIn}  />
           <Main>
             <Route exact path="/" component={Home} />
-            <Route exact path="/tables" component={Tables} />
+            <Route exact path="/users" component={Tables} />
             <Route exact path="/billing" component={Billing} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/player" component={Player}></Route>
+            <Route exact path="/athlete" component={Player}></Route>
             <Route exact path="/sports" component={Sports} />
             <Route exact path="/medical" component={Medical} />
+            <Route exact path="/groups" component={Groups} />
+            <Route exact path="/events" component={Event} />
+
+
 
             {/* <Redirect from='*' to='/dashboard' /> */}
           </Main>
